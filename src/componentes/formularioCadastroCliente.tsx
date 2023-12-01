@@ -1,12 +1,11 @@
 import React, { Component } from "react";
+import "./style.css"
 import Cliente from "./modelo/cliente";
 import CPF from "./modelo/cpf";
 import RG from "./modelo/rg";
 import Telefone from "./modelo/telefone";
-import "./style.css"
 
 type props = {
-    tema: string
     clientes: Array<Cliente>
 }
 
@@ -70,7 +69,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
     }
 
     render() {
-        let estiloBotao = `btn waves-effect waves-light ${this.props.tema}`
         return (
             <form className="cadastroDeCliente" onSubmit={this.criandoCli}>
                 <div className="perguntasDeCadastroCliente">
@@ -177,7 +175,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
                     <div className="coluna">
                         <div className="colunaBotao">
-                            <button className={estiloBotao} name="enviar" type="submit">
+                            <button className="botaoDeEnviarForm" name="enviar" type="submit">
                                 Enviar
                             </button>
                         </div>

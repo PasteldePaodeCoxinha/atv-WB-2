@@ -4,7 +4,6 @@ import Cliente from "./modelo/cliente";
 import "./style.css"
 
 type props = {
-    tema: string
     clientes: Array<Cliente>
 }
 

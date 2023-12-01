@@ -1,10 +1,9 @@
 import { Component } from "react";
 import BarraNavegacao from "./barraNavegacao";
-import FormularioCadastroCliente from "./formularioCadastroCliente";
-import ListaCliente from "./listaCliente";
 import Empresa from "./modelo/empresa";
 import "./style.css"
 import ClienteMenu from "./clienteMenu";
+import ProdutoMenu from "./produtoMenu";
 
 type state = {
     tela: string
@@ -28,12 +27,19 @@ export default class Roteador extends Component<{}, state> {
     }
 
     render() {
-        const barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} tema="purple lighten-4" botoes={['Clientes']} />
+        const barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} botoes={['Clientes', 'Produtos']} />
         if (this.state.tela === 'Clientes') {
             return (
                 <>
                     {barraNavegacao}
-                    <ClienteMenu tema="purple lighten-4" clientes={empresa.getClientes} />
+                    <ClienteMenu clientes={empresa.getClientes} />
+                </>
+            )
+        } else if (this.state.tela === 'Produtos') {
+            return (
+                <>
+                    {barraNavegacao}
+                    <ProdutoMenu produtos={empresa.getProdutos} />
                 </>
             )
         }

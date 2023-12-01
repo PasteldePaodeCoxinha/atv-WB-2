@@ -1,19 +1,19 @@
 import { Component} from "react";
 import "./style.css"
 import BarraNavegacao from "./barraNavegacao";
-import ListaCliente from "./listaCliente";
-import FormularioCadastroCliente from "./formularioCadastroCliente";
-import Cliente from "./modelo/cliente";
+import Produto from "./modelo/produto";
+import FormularioCadastroProduto from "./formularioCadastroProduto";
+import ListaProduto from "./listaProduto";
 
 type props = {
-    clientes: Array<Cliente>
+    produtos: Array<Produto>
 }
 
 type state = {
     tela: string
 }
 
-export default class ClienteMenu extends Component<props, state>{
+export default class ProdutoMenu extends Component<props, state>{
     constructor(props: props) {
         super(props)
         this.state = {
@@ -34,14 +34,14 @@ export default class ClienteMenu extends Component<props, state>{
             return (
                 <>
                     {barraNavegacao}
-                    <ListaCliente clientes={this.props.clientes} />
+                    <ListaProduto produtos={this.props.produtos} />
                 </>
             )
         } else if (this.state.tela === 'Cadastrar') {
             return (
                 <>
                     {barraNavegacao}
-                    <FormularioCadastroCliente clientes={this.props.clientes} />
+                    <FormularioCadastroProduto produtos={this.props.produtos} />
                 </>
             )
         }

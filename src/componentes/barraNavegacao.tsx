@@ -3,7 +3,6 @@ import { Component } from "react";
 import "./style.css"
 
 type props = {
-    tema: string,
     botoes: string[],
     seletorView: Function
 }
@@ -15,21 +14,23 @@ export default class BarraNavegacao extends Component<props> {
             return <></>
         } else {
             let lista = this.props.botoes.map(valor =>
-                <li key={valor}><a onClick={(e) => this.props.seletorView(valor, e)}>{valor}</a></li>
+                <li key={valor} className="estilizacaoDotextoDaPagina">
+                    <a className="estilaizacaoDoLinkDaPagina"
+                        onClick={(e) => this.props.seletorView(valor, e)}>{valor}
+                    </a>
+                </li>
             )
             return lista
         }
     }
 
     render() {
-        let estilo = `${this.props.tema}`
         return (
             <>
-                <nav className={estilo}>
-                    <div className="nav-wrapper">
-                        <a className="brand-logo">WB</a>
-                        <a data-target="mobile-menu" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-                        <ul className="right hide-on-med-and-down">
+                <nav className="navbar">
+                    <div className="opcoesDeNavbar">
+                        <a className="logoDaWB">WB</a>
+                        <ul className="listaDePaginas">
                             {this.gerarListaBotoes()}
                         </ul>
                     </div>
