@@ -1,4 +1,4 @@
-import { Component, ReactNode } from "react";
+import { Component} from "react";
 import "./style.css"
 import BarraNavegacao from "./barraNavegacao";
 import ListaCliente from "./listaCliente";
