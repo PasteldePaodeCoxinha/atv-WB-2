@@ -81,7 +81,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 type="text"
                                 value={this.state.nome}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nome: e.target.value })}
-                                className="campoDeInputTexto" 
+                                className="campoDeInputTexto"
                                 required />
                         </div>
                         <div className="inputFormCadastro">
@@ -90,8 +90,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 type="text"
                                 value={this.state.nomeSocial}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nomeSocial: e.target.value })}
-                                className="campoDeInputTexto"
-                                required />
+                                className="campoDeInputTexto" />
                         </div>
                         <div className="inputFormCadastro">
                             <select

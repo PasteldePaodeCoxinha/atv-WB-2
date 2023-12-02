@@ -4,6 +4,7 @@ import BarraNavegacao from "../barraNavegacao";
 import ListaCliente from "../Listas/listaCliente";
 import FormularioCadastroCliente from "../Formulario/formularioCadastroCliente";
 import Cliente from "../modelo/cliente";
+import AtualizaCliente from "../Atualizar/atualizarCliente";
 
 type props = {
     clientes: Array<Cliente>
@@ -29,7 +30,7 @@ export default class ClienteMenu extends Component<props, state>{
     }
 
     render() {
-        const barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} botoes={['Listar', 'Cadastrar']} />
+        const barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} botoes={['Listar', 'Cadastrar', 'Atualizar']} />
         if (this.state.tela === 'Listar') {
             return (
                 <>
@@ -42,6 +43,13 @@ export default class ClienteMenu extends Component<props, state>{
                 <>
                     {barraNavegacao}
                     <FormularioCadastroCliente clientes={this.props.clientes} />
+                </>
+            )
+        } else if (this.state.tela === 'Atualizar') {
+            return (
+                <>
+                    {barraNavegacao}
+                    <AtualizaCliente clientes={this.props.clientes} />
                 </>
             )
         }
