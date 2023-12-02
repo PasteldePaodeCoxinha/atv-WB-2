@@ -1,3 +1,4 @@
+/* Estilo de forms */
 .colunaDoForm {
     display: flex;
     width: 100%;
@@ -11,6 +12,19 @@
     color: black;
 }
 
+.mensagemErroValidacao {
+    display: flex;
+    text-align: center;
+    color: rgb(255, 0, 0);
+
+}
+
+.mensagensDeErros {
+    width: 100%;
+    text-align: left;
+}
+
+/* Estilo da Navbar */
 .navbar {
     display: flex;
     background-color: pink;

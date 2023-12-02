@@ -19,6 +19,7 @@ type state = {
     dataRg: string,
     dddTel: string,
     telefone: string
+    erroCadastro: string
 }
 
 export default class FormularioCadastroCliente extends Component<props, state> {
@@ -33,162 +34,199 @@ export default class FormularioCadastroCliente extends Component<props, state> {
             valorRg: "",
             dataRg: "",
             dddTel: "",
-            telefone: ""
+            telefone: "",
+            erroCadastro: ""
         }
     }
 
     criandoCli = (e: React.FormEvent<Element>) => {
         e.preventDefault()
 
-        const dataCpf = new Date(this.state.dataCpf)
-        const cpf = new CPF(this.state.valorCpf, dataCpf);
+        if (this.erroValidacao().length !== 1) {
+            this.setState({
+                erroCadastro: "Não é possível cadastro, existe campos inválidos."
+            })
+            return
+        } else {
+            const dataCpf = new Date(this.state.dataCpf)
+            const cpf = new CPF(this.state.valorCpf, dataCpf);
 
-        let cliente = new Cliente(this.state.nome, this.state.nomeSocial, this.state.genero, cpf)
+            let cliente = new Cliente(this.state.nome, this.state.nomeSocial, this.state.genero, cpf)
 
-        const tel = new Telefone(this.state.dddTel, this.state.telefone);
-        cliente.setTel = tel
+            const tel = new Telefone(this.state.dddTel, this.state.telefone);
+            cliente.setTel = tel
 
-        const dataRg = new Date(this.state.dataRg)
-        const rg = new RG(this.state.valorRg, dataRg)
+            const dataRg = new Date(this.state.dataRg)
+            const rg = new RG(this.state.valorRg, dataRg)
 
-        cliente.setRgs = rg
+            cliente.setRgs = rg
 
-        this.props.clientes.push(cliente)
+            this.props.clientes.push(cliente)
 
-        this.setState({
-            nome: "",
-            nomeSocial: "",
-            genero: "",
-            valorCpf: "",
-            dataCpf: "",
-            valorRg: "",
-            dataRg: "",
-            dddTel: "",
-            telefone: ""
-        })
+            this.setState({
+                nome: "",
+                nomeSocial: "",
+                genero: "",
+                valorCpf: "",
+                dataCpf: "",
+                valorRg: "",
+                dataRg: "",
+                dddTel: "",
+                telefone: "",
+                erroCadastro: ""
+            })
+        }
+    }
+
+    erroValidacao = () => {
+        let mensagemErro = [""]
+        if (isNaN(Number(this.state.valorCpf))) {
+            mensagemErro.push("O número de CPF aceita apenas números.")
+        }
+        if (isNaN(Number(this.state.valorRg))) {
+            mensagemErro.push("O número de RG aceita apenas números.")
+        }
+        if (isNaN(Number(this.state.dddTel))) {
+            mensagemErro.push("O DDD do telefone aceita apenas números.")
+        }
+        if (isNaN(Number(this.state.telefone))) {
+            mensagemErro.push("O telefone aceita apenas números.")
+        }
+
+        return mensagemErro
     }
 
     render() {
         return (
-            <form className="cadastroDeCliente" onSubmit={this.criandoCli}>
-                <div className="perguntasDeCadastroCliente">
-
-                    {/* informações de nome e genêro */}
-                    <div className="colunaDoForm">
-                        <div className="inputFormCadastro">
-                            <label htmlFor="nome">Nome Completo</label>
-                            <input id="nome"
-                                type="text"
-                                value={this.state.nome}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nome: e.target.value })}
-                                className="campoDeInputTexto"
-                                required />
-                        </div>
-                        <div className="inputFormCadastro">
-                            <label htmlFor="nomeSocial">Nome Social</label>
-                            <input id="nomeSocial"
-                                type="text"
-                                value={this.state.nomeSocial}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nomeSocial: e.target.value })}
-                                className="campoDeInputTexto" />
-                        </div>
-                        <div className="inputFormCadastro">
-                            <select
-                                className="dropdownDeGenero"
-                                name="genero"
-                                id="dropdownDeGenero"
-                                onChange={(e) => this.setState({ genero: e.target.value })}
-                                required>
-                                <option value="0" style={{ display: 'none' }}></option>
-                                <option value="M">Masculino</option>
-                                <option value="F">Feminino</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    {/* informações de CPF */}
-                    <div className="colunaDoForm">
-                        <div className="inputFormCadastro">
-                            <label htmlFor="numCpf">Numero CPF</label>
-                            <input id="numCpf"
-                                type="text"
-                                maxLength={11}
-                                minLength={11}
-                                value={this.state.valorCpf}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ valorCpf: e.target.value })}
-                                className="campoDeInputTexto"
-                                required />
-                        </div>
-                        <div className="inputFormCadastro">
-                            <label htmlFor="dataCpf">Data CPF</label>
-                            <input id="dataCpf"
-                                type="date"
-                                value={this.state.dataCpf}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dataCpf: e.target.value })}
-                                className="campoDeInputData"
-                                required />
-                        </div>
-                    </div>
-
-                    {/* informações de RG */}
-                    <div className="colunaDoForm">
-                        <div className="inputFormCadastro">
-                            <label htmlFor="numRg">Numero RG</label>
-                            <input id="numRg"
-                                type="text"
-                                maxLength={9}
-                                minLength={9}
-                                value={this.state.valorRg}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ valorRg: e.target.value })}
-                                className="campoDeInputTexto"
-                                required />
-                        </div>
-                        <div className="inputFormCadastro">
-                            <label htmlFor="dataRg">Data RG</label>
-                            <input id="dataRg"
-                                type="date"
-                                value={this.state.dataRg}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dataRg: e.target.value })}
-                                className="campoDeInputData"
-                                required />
-                        </div>
-                    </div>
-
-                    {/* informações de telefone */}
-                    <div className="colunaDoForm">
-                        <div className="inputFormCadastro">
-                            <label htmlFor="ddd">DDD telefone</label>
-                            <input id="ddd"
-                                type="text"
-                                minLength={2}
-                                maxLength={3}
-                                value={this.state.dddTel}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dddTel: e.target.value })}
-                                className="campoDeInputTexto"
-                                required />
-                        </div>
-                        <div className="inputFormCadastro">
-                            <label htmlFor="telefone">Telefone</label>
-                            <input id="telefone"
-                                type="text"
-                                maxLength={9}
-                                minLength={8}
-                                value={this.state.telefone}
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ telefone: e.target.value })}
-                                className="campoDeInputTexto"
-                                required />
-                        </div>
-                    </div>
-
-                    <div className="coluna">
-                        <div className="colunaBotao">
-                            <button className="botaoDeEnviarForm" name="enviar" type="submit">
-                                Enviar
-                            </button>
-                        </div>
-                    </div>
+            <div>
+                <p></p>
+                <div className="mensagensDeErros ">
+                    {this.erroValidacao().map(i => <p className="mensagemErroValidacao">{i}</p>)}
+                    <p className="erroNoCadastro">{this.state.erroCadastro}</p>
                 </div>
-            </form>
+                <form className="cadastroDeCliente" onSubmit={this.criandoCli}>
+                    <div className="perguntasDeCadastroCliente">
+
+                        {/* informações de nome e genêro */}
+                        <div className="colunaDoForm">
+                            <div className="inputFormCadastro">
+                                <label htmlFor="nome">Nome Completo</label>
+                                <input id="nome"
+                                    type="text"
+                                    maxLength={30}
+                                    value={this.state.nome}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nome: e.target.value })}
+                                    className="campoDeInputTexto"
+                                    required />
+                            </div>
+                            <div className="inputFormCadastro">
+                                <label htmlFor="nomeSocial">Nome Social</label>
+                                <input id="nomeSocial"
+                                    type="text"
+                                    maxLength={30}
+                                    value={this.state.nomeSocial}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nomeSocial: e.target.value })}
+                                    className="campoDeInputTexto" />
+                            </div>
+                            <div className="inputFormCadastro">
+                                <label htmlFor="dropdownDeGenero">Sexo</label>
+                                <select
+                                    className="dropdownDeGenero"
+                                    name="genero"
+                                    id="dropdownDeGenero"
+                                    onChange={(e) => this.setState({ genero: e.target.value })}
+                                    required>
+                                    <option value="0" style={{ display: 'none' }}></option>
+                                    <option value="M">Masculino</option>
+                                    <option value="F">Feminino</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        {/* informações de CPF */}
+                        <div className="colunaDoForm">
+                            <div className="inputFormCadastro">
+                                <label htmlFor="numCpf">Numero CPF</label>
+                                <input id="numCpf"
+                                    type="text"
+                                    maxLength={11}
+                                    minLength={11}
+                                    value={this.state.valorCpf}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ valorCpf: e.target.value })}
+                                    className="campoDeInputTexto"
+                                    required />
+                            </div>
+                            <div className="inputFormCadastro">
+                                <label htmlFor="dataCpf">Data CPF</label>
+                                <input id="dataCpf"
+                                    type="date"
+                                    value={this.state.dataCpf}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dataCpf: e.target.value })}
+                                    className="campoDeInputData"
+                                    required />
+                            </div>
+                        </div>
+
+                        {/* informações de RG */}
+                        <div className="colunaDoForm">
+                            <div className="inputFormCadastro">
+                                <label htmlFor="numRg">Numero RG</label>
+                                <input id="numRg"
+                                    type="text"
+                                    maxLength={9}
+                                    minLength={9}
+                                    value={this.state.valorRg}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ valorRg: e.target.value })}
+                                    className="campoDeInputTexto"
+                                    required />
+                            </div>
+                            <div className="inputFormCadastro">
+                                <label htmlFor="dataRg">Data RG</label>
+                                <input id="dataRg"
+                                    type="date"
+                                    value={this.state.dataRg}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dataRg: e.target.value })}
+                                    className="campoDeInputData"
+                                    required />
+                            </div>
+                        </div>
+
+                        {/* informações de telefone */}
+                        <div className="colunaDoForm">
+                            <div className="inputFormCadastro">
+                                <label htmlFor="ddd">DDD Telefone</label>
+                                <input id="ddd"
+                                    type="text"
+                                    minLength={2}
+                                    maxLength={3}
+                                    value={this.state.dddTel}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dddTel: e.target.value })}
+                                    className="campoDeInputTexto"
+                                    required />
+                            </div>
+                            <div className="inputFormCadastro">
+                                <label htmlFor="telefone">Telefone</label>
+                                <input id="telefone"
+                                    type="text"
+                                    maxLength={9}
+                                    minLength={8}
+                                    value={this.state.telefone}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ telefone: e.target.value })}
+                                    className="campoDeInputTexto"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div className="coluna">
+                            <div className="colunaBotao">
+                                <button className="botaoDeEnviarForm" name="enviar" type="submit">
+                                    Enviar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         )
     }
 }
