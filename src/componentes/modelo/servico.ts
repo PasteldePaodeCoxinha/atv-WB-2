@@ -3,9 +3,9 @@ export default class Servico {
     public preco: number
     private comprado: Array<number>
     constructor(nome: string, preco: number) {
-        this.nome = nome,
-            this.preco = preco,
-            this.comprado = [0, 0, 0]
+        this.nome = nome
+        this.preco = preco
+        this.comprado = [0, 0, 0]
     }
 
     public get getComprado(): Array<number> {

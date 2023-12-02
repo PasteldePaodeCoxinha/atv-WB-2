@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./style.css"
-import Cliente from "./modelo/cliente";
-import CPF from "./modelo/cpf";
-import RG from "./modelo/rg";
-import Telefone from "./modelo/telefone";
+import "../style.css"
+import Cliente from "../modelo/cliente";
+import CPF from "../modelo/cpf";
+import RG from "../modelo/rg";
+import Telefone from "../modelo/telefone";
 
 type props = {
     clientes: Array<Cliente>
@@ -74,8 +74,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                 <div className="perguntasDeCadastroCliente">
 
                     {/* informações de nome e genêro */}
-                    <div className="colunaDoFormCliente">
-                        <div className="inputFormCadastroCliente">
+                    <div className="colunaDoForm">
+                        <div className="inputFormCadastro">
                             <label htmlFor="nome">Nome Completo</label>
                             <input id="nome"
                                 type="text"
@@ -83,7 +83,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nome: e.target.value })}
                                 className="campoDeInputTexto" />
                         </div>
-                        <div className="inputFormCadastroCliente">
+                        <div className="inputFormCadastro">
                             <label htmlFor="nomeSocial">Nome Social</label>
                             <input id="nomeSocial"
                                 type="text"
@@ -91,7 +91,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nomeSocial: e.target.value })}
                                 className="campoDeInputTexto" />
                         </div>
-                        <div className="inputFormCadastroCliente">
+                        <div className="inputFormCadastro">
                             <select
                                 className="dropdownDeGenero"
                                 name="genero"
@@ -102,12 +102,12 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 <option value="M">Masculino</option>
                                 <option value="F">Feminino</option>
                             </select>
-                        </div> 
+                        </div>
                     </div>
 
                     {/* informações de CPF */}
-                    <div className="colunaDoFormCliente">
-                        <div className="inputFormCadastroCliente">
+                    <div className="colunaDoForm">
+                        <div className="inputFormCadastro">
                             <label htmlFor="numCpf">Numero CPF</label>
                             <input id="numCpf"
                                 type="text"
@@ -117,7 +117,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ valorCpf: e.target.value })}
                                 className="campoDeInputTexto" />
                         </div>
-                        <div className="inputFormCadastroCliente">
+                        <div className="inputFormCadastro">
                             <label htmlFor="dataCpf">Data CPF</label>
                             <input id="dataCpf"
                                 type="date"
@@ -128,8 +128,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                     </div>
 
                     {/* informações de RG */}
-                    <div className="colunaDoFormCliente">
-                        <div className="inputFormCadastroCliente">
+                    <div className="colunaDoForm">
+                        <div className="inputFormCadastro">
                             <label htmlFor="numRg">Numero RG</label>
                             <input id="numRg"
                                 type="text"
@@ -139,7 +139,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ valorRg: e.target.value })}
                                 className="campoDeInputTexto" />
                         </div>
-                        <div className="inputFormCadastroCliente">
+                        <div className="inputFormCadastro">
                             <label htmlFor="dataRg">Data RG</label>
                             <input id="dataRg"
                                 type="date"
@@ -150,8 +150,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                     </div>
 
                     {/* informações de telefone */}
-                    <div className="colunaDoFormCliente">
-                        <div className="inputFormCadastroCliente">
+                    <div className="colunaDoForm">
+                        <div className="inputFormCadastro">
                             <label htmlFor="ddd">DDD telefone</label>
                             <input id="ddd"
                                 type="text"
@@ -161,7 +161,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dddTel: e.target.value })}
                                 className="campoDeInputTexto" />
                         </div>
-                        <div className="inputFormCadastroCliente">
+                        <div className="inputFormCadastro">
                             <label htmlFor="telefone">Telefone</label>
                             <input id="telefone"
                                 type="text"

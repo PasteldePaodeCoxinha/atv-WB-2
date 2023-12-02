@@ -1,12 +1,28 @@
-.colunaDoFormCliente {
+.colunaDoForm {
     display: flex;
     width: 100%;
     justify-content: space-around;
 }
 
-.inputFormCadastroCliente{
+.inputFormCadastro {
     width: 100%;
     padding: 0% 3%;
     margin: 4% 0 4%;
     color: black;
+}
+
+.navbar {
+    display: flex;
+    background-color: pink;
+    margin-bottom: 0.5%;
+}
+
+.listaDePaginas {
+    display: flex;
+    justify-content: space-around;
+}
+
+.estilizacaoDotextoDaPagina {
+    display: flex;
+    margin: 0% 13vw;
 }

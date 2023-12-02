@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./style.css"
-import Produto from "./modelo/produto";
+import "../style.css"
+import Produto from "../modelo/produto";
 
 type props = {
     produtos: Array<Produto>
@@ -38,22 +38,24 @@ export default class FormularioCadastroProduto extends Component<props, state> {
                 <div className="perguntasDeCadastroCliente">
 
                     {/* informações de nome e genêro */}
-                    <div className="colunaDoFormProduto">
-                        <div className="inputFormCadastroProduto">
-                            <label htmlFor="nomePro">Nome Completo</label>
+                    <div className="colunaDoForm">
+                        <div className="inputFormCadastro">
+                            <label htmlFor="nomePro">Nome do Produto</label>
                             <input id="nomePro"
                                 type="text"
                                 value={this.state.nome}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nome: e.target.value })}
-                                className="campoDeInputTexto" />
+                                className="campoDeInputTexto"
+                                required />
                         </div>
-                        <div className="inputFormCadastroProduto">
+                        <div className="inputFormCadastro">
                             <label htmlFor="precoPro">Preço</label>
                             <input id="precoPro"
                                 type="number"
-                                value={this.state.preco}
+                                step=".01"
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ preco: Number(e.target.value) })}
-                                className="campoDeInputTexto" />
+                                className="campoDeInputTexto"
+                                required />
                         </div>
                     </div>
                     <div className="coluna">

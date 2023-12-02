@@ -15,9 +15,9 @@ export default class BarraNavegacao extends Component<props> {
         } else {
             let lista = this.props.botoes.map(valor =>
                 <li key={valor} className="estilizacaoDotextoDaPagina">
-                    <a className="estilaizacaoDoLinkDaPagina"
+                    <button className="estilaizacaoDoLinkDaPagina"
                         onClick={(e) => this.props.seletorView(valor, e)}>{valor}
-                    </a>
+                    </button>
                 </li>
             )
             return lista
