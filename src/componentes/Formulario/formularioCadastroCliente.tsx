@@ -81,7 +81,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 type="text"
                                 value={this.state.nome}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nome: e.target.value })}
-                                className="campoDeInputTexto" />
+                                className="campoDeInputTexto" 
+                                required />
                         </div>
                         <div className="inputFormCadastro">
                             <label htmlFor="nomeSocial">Nome Social</label>
@@ -89,7 +90,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 type="text"
                                 value={this.state.nomeSocial}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nomeSocial: e.target.value })}
-                                className="campoDeInputTexto" />
+                                className="campoDeInputTexto"
+                                required />
                         </div>
                         <div className="inputFormCadastro">
                             <select
@@ -115,7 +117,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 minLength={11}
                                 value={this.state.valorCpf}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ valorCpf: e.target.value })}
-                                className="campoDeInputTexto" />
+                                className="campoDeInputTexto"
+                                required />
                         </div>
                         <div className="inputFormCadastro">
                             <label htmlFor="dataCpf">Data CPF</label>
@@ -123,7 +126,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 type="date"
                                 value={this.state.dataCpf}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dataCpf: e.target.value })}
-                                className="campoDeInputData" />
+                                className="campoDeInputData"
+                                required />
                         </div>
                     </div>
 
@@ -137,7 +141,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 minLength={9}
                                 value={this.state.valorRg}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ valorRg: e.target.value })}
-                                className="campoDeInputTexto" />
+                                className="campoDeInputTexto"
+                                required />
                         </div>
                         <div className="inputFormCadastro">
                             <label htmlFor="dataRg">Data RG</label>
@@ -145,7 +150,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 type="date"
                                 value={this.state.dataRg}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dataRg: e.target.value })}
-                                className="campoDeInputData" />
+                                className="campoDeInputData"
+                                required />
                         </div>
                     </div>
 
@@ -159,7 +165,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 maxLength={3}
                                 value={this.state.dddTel}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ dddTel: e.target.value })}
-                                className="campoDeInputTexto" />
+                                className="campoDeInputTexto"
+                                required />
                         </div>
                         <div className="inputFormCadastro">
                             <label htmlFor="telefone">Telefone</label>
@@ -169,7 +176,8 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                 minLength={8}
                                 value={this.state.telefone}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ telefone: e.target.value })}
-                                className="campoDeInputTexto" />
+                                className="campoDeInputTexto"
+                                required />
                         </div>
                     </div>
 
