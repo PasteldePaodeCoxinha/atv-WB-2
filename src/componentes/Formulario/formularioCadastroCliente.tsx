@@ -80,17 +80,32 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
     erroValidacao = () => {
         let mensagemErro = [""]
+        if (this.props.clientes.filter(c => c.nome === this.state.nome).length > 0) {
+            mensagemErro.push("Já existe um cliente com esse nome")
+        }
+        if (this.props.clientes.filter(c => c.getCpf.getValor === this.state.valorCpf).length > 0) {
+            mensagemErro.push("Já existe um cliente com esse CPF")
+        }
+        if (this.props.clientes.filter(c => c.getRgs[0].getValor === this.state.valorRg).length > 0) {
+            mensagemErro.push("Já existe um cliente com esse RG")
+        }
         if (isNaN(Number(this.state.valorCpf))) {
-            mensagemErro.push("O número de CPF aceita apenas números.")
+            mensagemErro.push("O campo número CPF aceita apenas números.")
         }
         if (isNaN(Number(this.state.valorRg))) {
-            mensagemErro.push("O número de RG aceita apenas números.")
+            mensagemErro.push("O campo número RG aceita apenas números.")
         }
         if (isNaN(Number(this.state.dddTel))) {
-            mensagemErro.push("O DDD do telefone aceita apenas números.")
+            mensagemErro.push("O campo DDD Telefone aceita apenas números.")
         }
         if (isNaN(Number(this.state.telefone))) {
-            mensagemErro.push("O telefone aceita apenas números.")
+            mensagemErro.push("O campo telefone aceita apenas números.")
+        }
+        if (/\d/.test(this.state.nome)) {
+            mensagemErro.push("O campo nome aceita apenas letras")
+        }
+        if (/\d/.test(this.state.nomeSocial)) {
+            mensagemErro.push("O campo nome social aceita apenas letras")
         }
 
         return mensagemErro

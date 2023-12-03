@@ -1,3 +1,7 @@
+li {
+    list-style-type: none;
+}
+
 /* Estilo de forms */
 .colunaDoForm {
     display: flex;

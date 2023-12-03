@@ -13,13 +13,13 @@ export default class ListaCliente extends Component<props> {
         return (
             <div className="listaClientes">
                 {this.props.clientes.map(c =>
-                    <div className="clienteNaLista">
-                        <p className="nomeClienteNaLista">{(c.nomeSocial === "")? c.nome : c.nomeSocial}</p>
-                        <p className="generoClienteNaLista">Genêro: {c.genero}</p>
-                        <p className="valorCPFnaLista">CPF: {c.getCpf.getValor}</p>
-                        <p className="valorRGNaLista">RG'S: {c.getRgs.map(r => r.getValor)}, </p>
-                        <p className="telefoneCompletoNaLista">Telefones: {c.getTelefones.map(t => t.geTelCompleto)}, </p>
-                    </div>)}
+                    <ul className="clienteNaLista">
+                        <li className="nomeClienteNaLista">{(c.nomeSocial === "")? c.nome : c.nomeSocial}</li>
+                        <li className="generoClienteNaLista">Genêro: {c.genero}</li>
+                        <li className="valorCPFnaLista">CPF: {c.getCpf.getValor}</li>
+                        <li className="valorRGNaLista">RG: {c.getRgs.map(r => r.getValor)} </li>
+                        <li className="telefoneCompletoNaLista">Telefone: {c.getTelefones.map(t => t.geTelCompleto)} </li>
+                    </ul>)}
             </div>
         )
     }
