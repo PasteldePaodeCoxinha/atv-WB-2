@@ -13,10 +13,10 @@ export default class ListaProduto extends Component<props> {
         return (
             <div className="listaProduto">
                 {this.props.produtos.map(p =>
-                    <div className="produtoNaLista">
-                        <p className="nomeProdutoNaLista">{p.nome}</p>
-                        <p className="produtoPrecoNaLista">Preço: R${p.preco}</p>
-                    </div>)}
+                    <ul className="produtoNaLista">
+                        <li className="nomeProdutoNaLista">{p.nome}</li>
+                        <li className="produtoPrecoNaLista">Preço: R${p.preco}</li>
+                    </ul>)}
             </div>
         )
     }

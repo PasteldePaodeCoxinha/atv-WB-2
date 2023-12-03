@@ -13,10 +13,10 @@ export default class ListaServico extends Component<props> {
         return (
             <div className="listaServico">
                 {this.props.servicos.map(s =>
-                    <div className="ServicoNaLista">
-                        <p className="nomeServicoNaLista">{s.nome}</p>
-                        <p className="servicoPrecoNaLista">Preço: R${s.preco}</p>
-                    </div>)}
+                    <ul className="ServicoNaLista">
+                        <li className="nomeServicoNaLista">{s.nome}</li>
+                        <li className="servicoPrecoNaLista">Preço: R${s.preco}</li>
+                    </ul>)}
             </div>
         )
     }

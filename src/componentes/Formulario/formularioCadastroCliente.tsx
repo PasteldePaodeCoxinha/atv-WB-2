@@ -114,7 +114,6 @@ export default class FormularioCadastroCliente extends Component<props, state> {
     render() {
         return (
             <div>
-                <p></p>
                 <div className="mensagensDeErros ">
                     {this.erroValidacao().map(i => <p className="mensagemErroValidacao">{i}</p>)}
                     <p className="erroNoCadastro">{this.state.erroCadastro}</p>
