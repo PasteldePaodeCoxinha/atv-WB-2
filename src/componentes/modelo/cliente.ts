@@ -5,20 +5,24 @@ import Servico from "./servico"
 import Telefone from "./telefone"
 
 export default class Cliente {
-    public nome: string
-    public nomeSocial: string
-    public genero: string
-    private cpf: CPF
+    public nome!: string
+    public nomeSocial!: string
+    public genero!: string
+    private cpf!: CPF
     private rgs: Array<RG>
     private dataCadastro: Date
     private telefones: Array<Telefone>
     private produtosConsumidos: Array<Produto>
     private servicosConsumidos: Array<Servico>
-    constructor(nome: string, nomeSocial: string, genero: string, cpf: CPF) {
-        this.nome = nome
-        this.nomeSocial = nomeSocial
-        this.genero = genero
-        this.cpf = cpf
+    constructor(nome: string, nomeSocial: string, genero: string, cpf: CPF)
+    constructor()
+    constructor(nome?: string, nomeSocial?: string, genero?: string, cpf?: CPF) {
+        if (nome !== undefined && nomeSocial !== undefined && genero !== undefined && cpf !== undefined) {
+            this.nome = nome
+            this.nomeSocial = nomeSocial
+            this.genero = genero
+            this.cpf = cpf
+        }
         this.rgs = []
         this.dataCadastro = new Date()
         this.telefones = []
@@ -40,6 +44,12 @@ export default class Cliente {
     public set setRgs(rg: RG) {
         this.rgs.push(rg)
     }
+    public mudarRg(antiRg: string, noRg: RG) {
+        let rgDes = this.rgs.find(e => e.getValor === antiRg)
+        if (rgDes !== undefined) {
+            this.rgs[this.rgs.indexOf(rgDes)] = noRg
+        }
+    }
 
     public get getDataCadastro(): Date {
         return this.dataCadastro
@@ -55,8 +65,8 @@ export default class Cliente {
         this.telefones = this.telefones.filter(telefone => telefone.getNumero !== tel)
     }
     public ediTel(tel: String, NoTel: Telefone) {
-        let telDes = this.telefones.find(e => e.getNumero == tel)
-        if (telDes != undefined) {
+        let telDes = this.telefones.find(e => e.getNumero === tel)
+        if (telDes !== undefined) {
             this.telefones[this.telefones.indexOf(telDes)] = NoTel
         }
     }

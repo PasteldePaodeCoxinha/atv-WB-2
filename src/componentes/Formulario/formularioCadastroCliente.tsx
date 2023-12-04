@@ -123,7 +123,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
                         {/* informações de nome e genêro */}
                         <div className="colunaDoForm">
-                            <div className="inputFormCadastro">
+                            <div className="inputForm">
                                 <label htmlFor="nome">Nome Completo</label>
                                 <input id="nome"
                                     type="text"
@@ -133,7 +133,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                     className="campoDeInputTexto"
                                     required />
                             </div>
-                            <div className="inputFormCadastro">
+                            <div className="inputForm">
                                 <label htmlFor="nomeSocial">Nome Social</label>
                                 <input id="nomeSocial"
                                     type="text"
@@ -142,7 +142,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nomeSocial: e.target.value })}
                                     className="campoDeInputTexto" />
                             </div>
-                            <div className="inputFormCadastro">
+                            <div className="inputForm">
                                 <label htmlFor="dropdownDeGenero">Sexo</label>
                                 <select
                                     className="dropdownDeGenero"
@@ -159,7 +159,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
                         {/* informações de CPF */}
                         <div className="colunaDoForm">
-                            <div className="inputFormCadastro">
+                            <div className="inputForm">
                                 <label htmlFor="numCpf">Numero CPF</label>
                                 <input id="numCpf"
                                     type="text"
@@ -170,7 +170,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                     className="campoDeInputTexto"
                                     required />
                             </div>
-                            <div className="inputFormCadastro">
+                            <div className="inputForm">
                                 <label htmlFor="dataCpf">Data CPF</label>
                                 <input id="dataCpf"
                                     type="date"
@@ -183,7 +183,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
                         {/* informações de RG */}
                         <div className="colunaDoForm">
-                            <div className="inputFormCadastro">
+                            <div className="inputForm">
                                 <label htmlFor="numRg">Numero RG</label>
                                 <input id="numRg"
                                     type="text"
@@ -194,7 +194,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                     className="campoDeInputTexto"
                                     required />
                             </div>
-                            <div className="inputFormCadastro">
+                            <div className="inputForm">
                                 <label htmlFor="dataRg">Data RG</label>
                                 <input id="dataRg"
                                     type="date"
@@ -207,7 +207,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
 
                         {/* informações de telefone */}
                         <div className="colunaDoForm">
-                            <div className="inputFormCadastro">
+                            <div className="inputForm">
                                 <label htmlFor="ddd">DDD Telefone</label>
                                 <input id="ddd"
                                     type="text"
@@ -218,7 +218,7 @@ export default class FormularioCadastroCliente extends Component<props, state> {
                                     className="campoDeInputTexto"
                                     required />
                             </div>
-                            <div className="inputFormCadastro">
+                            <div className="inputForm">
                                 <label htmlFor="telefone">Telefone</label>
                                 <input id="telefone"
                                     type="text"

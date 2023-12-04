@@ -2,6 +2,10 @@ li {
     list-style-type: none;
 }
 
+label {
+    margin-right: 2%;
+}
+
 /* Estilo de forms */
 .colunaDoForm {
     display: flex;
@@ -9,11 +13,12 @@ li {
     justify-content: space-around;
 }
 
-.inputFormCadastro {
+.inputForm {
     width: 100%;
     padding: 0% 3%;
     margin: 4% 0 4%;
     color: black;
+    display: flex;
 }
 
 .mensagemErroValidacao {
@@ -26,6 +31,10 @@ li {
 .mensagensDeErros {
     width: 100%;
     text-align: left;
+}
+
+.formAtualiza {
+    text-align: center;
 }
 
 /* Estilo da Navbar */
