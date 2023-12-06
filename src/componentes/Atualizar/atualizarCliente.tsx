@@ -39,20 +39,23 @@ export default class AtualizaCliente extends Component<props, state> {
             erroCadastro: ""
         }
     }
-
-    atualizaCliente = (e: React.FormEvent<Element>) => {
-        e.preventDefault()
+    pegarUmCliente = (e: React.ChangeEvent<HTMLInputElement>) => {
         this.setState({
+            nome: e.target.value,
             cliente: this.props.clientes.filter(c => (c.nome === this.state.nome) || (c.nomeSocial === this.state.nome))[0]
         })
+    }
 
-        console.log(this.state.cliente);
-        this.state.cliente.nome = this.state.novoNome
-        this.state.cliente.nomeSocial = this.state.nomeSocial
-        this.state.cliente.genero = this.state.genero
-        this.state.cliente.mudarRg(this.state.cliente.getRgs[0].getValor, new RG(this.state.valorRg, new Date(this.state.dataRg)))
-        this.state.cliente.ediTel(this.state.cliente.getTelefones[0].getNumero, new Telefone(this.state.dddTel, this.state.telefone))
-        console.log(this.state.cliente);
+    atualizaCliente = (e: React.FormEvent<Element>) => {
+        this.state.cliente.nome = (this.state.novoNome === "") ? this.state.cliente.nome : this.state.novoNome
+        this.state.cliente.nomeSocial = (this.state.nomeSocial === "") ? this.state.cliente.nomeSocial : this.state.nomeSocial
+        this.state.cliente.genero = (this.state.genero === "") ? this.state.cliente.genero : this.state.genero
+        if (this.state.valorRg !== "" && this.state.dataRg !== "") {
+            this.state.cliente.mudarRg(this.state.cliente.getRgs[0].getValor, new RG(this.state.valorRg, new Date(this.state.dataRg)))
+        }
+        if (this.state.telefone !== "" && this.state.dddTel !== "") {
+            this.state.cliente.ediTel(this.state.cliente.getTelefones[0].getNumero, new Telefone(this.state.dddTel, this.state.telefone))
+        }
 
         this.setState({
             nome: "",
@@ -65,6 +68,8 @@ export default class AtualizaCliente extends Component<props, state> {
             telefone: "",
             erroCadastro: ""
         })
+
+        e.preventDefault()
     }
 
     erroValidacao = () => {
@@ -104,7 +109,7 @@ export default class AtualizaCliente extends Component<props, state> {
                         <input id="nome"
                             type="text"
                             value={this.state.nome}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.setState({ nome: e.target.value })}
+                            onChange={this.pegarUmCliente}
                             className="campoDeInputTexto"
                             required />
                     </div>
