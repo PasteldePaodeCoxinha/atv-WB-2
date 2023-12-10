@@ -4,6 +4,7 @@ import BarraNavegacao from "../barraNavegacao";
 import Servico from "../modelo/servico";
 import FormularioCadastroServico from "../Formulario/formularioCadastroServico";
 import ListaServico from "../Listas/listaServico";
+import AtualizaServico from "../Atualizar/atualizarServico";
 
 type props = {
     servicos: Array<Servico>
@@ -29,7 +30,7 @@ export default class ServicoMenu extends Component<props, state>{
     }
 
     render() {
-        const barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} botoes={['Listar', 'Cadastrar']} />
+        const barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} botoes={['Listar', 'Cadastrar', 'Atualizar']} />
         if (this.state.tela === 'Listar') {
             return (
                 <>
@@ -42,6 +43,13 @@ export default class ServicoMenu extends Component<props, state>{
                 <>
                     {barraNavegacao}
                     <FormularioCadastroServico servicos={this.props.servicos} />
+                </>
+            )
+        } else if (this.state.tela === 'Atualizar') {
+            return (
+                <>
+                    {barraNavegacao}
+                    <AtualizaServico servicos={this.props.servicos} />
                 </>
             )
         }

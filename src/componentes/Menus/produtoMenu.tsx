@@ -4,6 +4,7 @@ import BarraNavegacao from "../barraNavegacao";
 import Produto from "../modelo/produto";
 import FormularioCadastroProduto from "../Formulario/formularioCadastroProduto";
 import ListaProduto from "../Listas/listaProduto";
+import AtualizaProduto from "../Atualizar/atualizarProduto";
 
 type props = {
     produtos: Array<Produto>
@@ -29,7 +30,7 @@ export default class ProdutoMenu extends Component<props, state>{
     }
 
     render() {
-        const barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} botoes={['Listar', 'Cadastrar']} />
+        const barraNavegacao = <BarraNavegacao seletorView={this.selecionarView} botoes={['Listar', 'Cadastrar', 'Atualizar']} />
         if (this.state.tela === 'Listar') {
             return (
                 <>
@@ -42,6 +43,13 @@ export default class ProdutoMenu extends Component<props, state>{
                 <>
                     {barraNavegacao}
                     <FormularioCadastroProduto produtos={this.props.produtos} />
+                </>
+            )
+        } else if (this.state.tela === 'Atualizar') {
+            return (
+                <>
+                    {barraNavegacao}
+                    <AtualizaProduto produtos={this.props.produtos} />
                 </>
             )
         }

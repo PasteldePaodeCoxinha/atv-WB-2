@@ -44,7 +44,7 @@ export default class FormularioCadastroProduto extends Component<props, state> {
     erroValidacao = () => {
         let mensagemErro = [""]
         if (this.props.produtos.filter(p => p.nome === this.state.nome).length > 0) {
-            mensagemErro.push("Já existe um cliente com esse nome")
+            mensagemErro.push("Já existe um produto com esse nome")
         }
         if (/\d/.test(this.state.nome)) {
             mensagemErro.push("O campo nome aceita apenas letras")
@@ -63,7 +63,7 @@ export default class FormularioCadastroProduto extends Component<props, state> {
                 <form className="cadastroDeProduto" onSubmit={this.criandoPro}>
                     <div className="perguntasDeCadastroCliente">
 
-                        {/* informações de nome e genêro */}
+                        {/* informações de nome e preço */}
                         <div className="colunaDoForm">
                             <div className="inputFormCadastro">
                                 <label htmlFor="nomePro">Nome do Produto</label>

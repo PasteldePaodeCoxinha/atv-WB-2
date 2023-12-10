@@ -44,7 +44,7 @@ export default class FormularioCadastroServico extends Component<props, state> {
     erroValidacao = () => {
         let mensagemErro = [""]
         if (this.props.servicos.filter(s => s.nome === this.state.nome).length > 0) {
-            mensagemErro.push("Já existe um cliente com esse nome")
+            mensagemErro.push("Já existe um serviço com esse nome")
         }
         if (/\d/.test(this.state.nome)) {
             mensagemErro.push("O campo nome aceita apenas letras")
@@ -63,7 +63,7 @@ export default class FormularioCadastroServico extends Component<props, state> {
                 <form className="cadastroDeCliente" onSubmit={this.criandoPro}>
                     <div className="perguntasDeCadastroCliente">
 
-                        {/* informações de nome e genêro */}
+                        {/* informações de nome e preço */}
                         <div className="colunaDoForm">
                             <div className="inputFormCadastro">
                                 <label htmlFor="nomePro">Nome do Serviço</label>

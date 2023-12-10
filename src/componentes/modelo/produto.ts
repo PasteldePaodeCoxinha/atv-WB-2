@@ -1,10 +1,14 @@
 export default class Produto {
-    public nome: string
-    public preco: number
+    public nome!: string
+    public preco!: number
     private comprado: Array<number>
-    constructor(nome: string, preco: number) {
-        this.nome = nome
-        this.preco = preco
+    constructor(nome: string, preco: number)
+    constructor()
+    constructor(nome?: string, preco?: number) {
+        if (nome !== undefined && preco !== undefined) {
+            this.nome = nome
+            this.preco = preco
+        }
         this.comprado = [0, 0, 0]
     }
 
